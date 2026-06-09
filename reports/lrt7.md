@@ -1,11 +1,15 @@
-Лабораторная работа 07
+## Лабораторная работа 07
 Тема: изучение систем управления пакетами на примере gtest
+
 Ход выполнения:
+```
 $ alias gsed=sed
 $ cd Goydarik/workspace
 $ pushd .
 ~/Goydarik/workspace ~/Goydarik/workspace
 $ source scripts/activate
+```
+```
 $ git clone https://github.com/Goydarik/lab06 projects/lab07
 Cloning into 'projects/lab07'...
 remote: Enumerating objects: 166, done.
@@ -14,6 +18,8 @@ remote: Compressing objects: 100% (94/94), done.
 remote: Total 166 (delta 62), reused 149 (delta 45), pack-reused 0 (from 0)
 Receiving objects: 100% (166/166), 29.00 KiB | 1.45 MiB/s, done.
 Resolving deltas: 100% (62/62), done.
+```
+```
 $ cd projects/lab07
 $ git remote remove origin
 $ git remote add origin https://github.com/Goydarik/lab07
@@ -84,10 +90,14 @@ if(BUILD_TESTS)
   add_test(NAME check COMMAND check)
 endif()
 include(CPackConfig.cmake)
+```
+```
 
 $ git rm -rf third-party/gtest
 $ mkdir tests
 $ cd tests
+```
+```
 $ nano test_print.cpp
 
 Содержимое test_print.cpp:
@@ -99,6 +109,8 @@ TEST(PrintTest, OutputCheck) {
     print("hello", out);
     EXPECT_EQ(out.str(), "hello");
 }
+```
+```
 
 $ nano CMakeLists.txt
 
@@ -106,7 +118,8 @@ $ nano CMakeLists.txt
 add_executable(tests test_print.cpp)
 target_link_libraries(tests PRIVATE print gtest_main)
 add_test(NAME tests COMMAND tests)
-
+```
+```
 $ cd ..
 $ cmake -H. -B_builds -DBUILD_TESTS=ON
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
@@ -135,6 +148,8 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- Configuring done (0.3s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/rasul/Goydarik/workspace/projects/lab07/_builds
+```
+```
 $ cmake --build _builds
 [  7%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
 [ 14%] Linking CXX static library libprint.a
@@ -168,7 +183,8 @@ Test project /home/rasul/Goydarik/workspace/projects/lab07/_builds
 100% tests passed, 0 tests failed out of 2
 
 Total Test time (real) =   0.01 sec
-
+```
+```
 $ mkdir demo
 $ nano demo/main.cpp
 
@@ -191,21 +207,24 @@ int main(int argc, char* argv[]) {
         out << std::endl;
     }
 }
-
+```
+```
 $ nano CMakeLists.txt
-
+```
 дописываем в конец файла:
+```
 add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp)
 target_link_libraries(demo print)
 install(TARGETS demo RUNTIME DESTINATION bin)
-
+```
+```
 $ mkdir tools
 $ git submodule add https://github.com/ruslo/polly_tools/polly
 $ tools/polly/bin/polly.py --test
 $ tools/polly/bin/polly.py --install
-
+```
 выдает ошибку:
-
+```
 == WARNING ==
 
 Looks like cmake arguments changed. You have two options to fix it:
@@ -215,9 +234,9 @@ Looks like cmake arguments changed. You have two options to fix it:
 - "cmake" "-H." "-B/home/rasul/Goydarik/workspace/projects/lab07/_builds/default" "-DCMAKE_TOOLCHAIN_FILE=/home/rasul/Goydarik/workspace/projects/lab07/tools/polly/default.cmake"
 + "cmake" "-H." "-B/home/rasul/Goydarik/workspace/projects/lab07/_builds/default" "-DCMAKE_TOOLCHAIN_FILE=/home/rasul/Goydarik/workspace/projects/lab07/tools/polly/default.cmake" "-DCMAKE_INSTALL_PREFIX=/home/rasul/Goydarik/workspace/projects/lab07/_install/default"
 ?                                                                                                                                                                                 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+```
 исправляем, добавляя флаг --clear:
-
+```
 $ tools/polly/bin/polly.py --install --clear
 Python version: 3.13
 Build
@@ -422,6 +441,8 @@ Build: 0:00:08.953552s
 Total: 0:00:12.252133s
 -
 SUCCESS
+```
+```
 $ tools/polly/bin/polly.py --toolchain clang-cxx14
 Python version: 3.13
 Build dir: /home/rasul/Goydarik/workspace/projects/lab07/_builds/clang-cxx14
@@ -492,9 +513,9 @@ Command exit with status "1": [/home/rasul/Goydarik/workspace/projects/lab07]> "
 
 Log: /home/rasul/Goydarik/workspace/projects/lab07/_logs/polly/clang-cxx14/log.txt
 *** FAILED ***
-
+```
 пробуем установить clang:
-
+```
 $ sudo apt update
 Get:1 http://security.debian.org/debian-security trixie-security InRelease [43.4 kB]
 Hit:2 http://deb.debian.org/debian trixie InRelease  
@@ -510,9 +531,9 @@ Fetched 545 kB in 23s (24.1 kB/s)
 $ sudo apt install clang-14 clang++-14
 Error: Unable to locate package clang-14
 Error: Unable to locate package clang++-14
-
+```
 Из-за невозможности установить clang выполняем эту команду через gcc:
-
+```
 $ gcc --version
 gcc (Debian 14.2.0-19) 14.2.0
 Copyright (C) 2024 Free Software Foundation, Inc.
@@ -638,3 +659,4 @@ Build: 0:00:07.942628s
 Total: 0:00:11.079022s
 -
 SUCCESS
+```
