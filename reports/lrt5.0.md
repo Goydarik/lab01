@@ -1,4 +1,4 @@
-##Laboratory work V(Tutorial)
+## Laboratory work V(Tutorial)
 
 Данная лабораторная работа посвящена изучению фреймворков для тестирования на примере GTest
 
