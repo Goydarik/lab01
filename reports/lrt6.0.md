@@ -1,4 +1,4 @@
-##Laboratory work VI(Tutorial + Homework)
+## Laboratory work VI(Tutorial + Homework)
 
 Данная лабораторная работа посвящена изучению средств пакетирования на примере CPack
 
@@ -15,6 +15,8 @@
 -pushd .
 --~/Goydarik/workspace ~/Goydarik/workspace
 -source scripts/activate
+```
+```
 -git clone https://github.com/${GITHUB_USERNAME}/lab05 projects/lab06
 --Клонирование в «projects/lab06»...
 remote: Enumerating objects: 101, done.
@@ -23,9 +25,13 @@ remote: Compressing objects: 100% (51/51), done.
 remote: Total 101 (delta 31), reused 101 (delta 31), pack-reused 0 (from 0)
 Получение объектов: 100% (101/101), 19.78 КиБ | 2.47 МиБ/с, готово.
 Определение изменений: 100% (31/31), готово.
+```
+```
 -cd projects/lab06
 -git remote remove origin
 -git remote add origin https://github.com/${GITHUB_USERNAME}/lab06
+```
+```
 -gsed -i '/project(print)/a\
 set(PRINT_VERSION_STRING "v\${PRINT_VERSION}")
 ' CMakeLists.txt
@@ -45,6 +51,8 @@ set(PRINT_VERSION_MINOR 1)
 - gsed -i '/project(print)/a\
 set(PRINT_VERSION_MAJOR 0)
 ' CMakeLists.txt
+```
+```
 - git diff
 --diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 02df29e..31fe12b 100644
@@ -66,17 +74,24 @@ index 02df29e..31fe12b 100644
 +set(PRINT_VERSION_STRING "v${PRINT_VERSION}")
  
  add_library(print STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/print.cpp)
- 
+```
+```
 - touch DESCRIPTION && edit DESCRIPTION
 - touch ChangeLog.md
 - export DATE="`LANG=en_US date +'%a %b %d %Y'`"
+```
+```
 - cat > ChangeLog.md <<EOF
 >* ${DATE} ${GITHUB_USERNAME} <${GITHUB_EMAIL}> 0.1.0.0
 >- Initial RPM release
 >EOF
+```
+```
 -cat > CPackConfig.cmake <<EOF
 >include(InstallRequiredSystemLibraries)
 >EOF
+```
+```
 -nano CPackConfig.cmake
 -set(CPACK_PACKAGE_CONTACT ${GITHUB_EMAIL})
 set(CPACK_PACKAGE_VERSION_MAJOR \${PRINT_VERSION_MAJOR})
@@ -84,12 +99,15 @@ set(CPACK_PACKAGE_VERSION_MINOR \${PRINT_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH \${PRINT_VERSION_PATCH})
 set(CPACK_PACKAGE_VERSION_TWEAK \${PRINT_VERSION_TWEAK})
 set(CPACK_PACKAGE_VERSION \${PRINT_VERSION})
+```
+```
 -cat >> CPackConfig.cmake <<EOF
 
 >set(CPACK_RESOURCE_FILE_LICENSE \${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
 >set(CPACK_RESOURCE_FILE_README \${CMAKE_CURRENT_SOURCE_DIR}/README.md)
 >EOF
-
+```
+```
 -cat >> CPackConfig.cmake <<EOF
 
 >set(CPACK_RPM_PACKAGE_NAME "print-devel")
@@ -98,6 +116,8 @@ set(CPACK_PACKAGE_VERSION \${PRINT_VERSION})
 >set(CPACK_RPM_CHANGELOG_FILE \${CMAKE_CURRENT_SOURCE_DIR}/ChangeLog.md)
 >set(CPACK_RPM_PACKAGE_RELEASE 1)
 >EOF
+```
+```
 
 -cat >> CPackConfig.cmake <<EOF
 
@@ -105,18 +125,24 @@ set(CPACK_PACKAGE_VERSION \${PRINT_VERSION})
 >set(CPACK_DEBIAN_PACKAGE_PREDEPENDS "cmake >= 3.0")
 >set(CPACK_DEBIAN_PACKAGE_RELEASE 1)
 >EOF
+```
+```
 
 -cat >> CPackConfig.cmake <<EOF
 
 >include(CPack)
 >EOF
-
+```
+```
 -cat >> CMakeLists.txt <<EOF
 
 >include(CPackConfig.cmake)
 >EOF
+```
+```
 -gsed -i 's/lab05/lab06/g' README.md
-
+```
+```
 -git add .
 -git commit -m"added cpack config"
 --[main 3a167d1] added cpack config
@@ -144,7 +170,9 @@ Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
 To https://github.com/Goydarik/lab06
    bf7ed2c..79805cd  main -> main
+```
 (наблюдаем синхронизацию с Github Actions)
+```
 -cmake -H. -B_build
 --CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.10 will be removed from a future version of
@@ -153,6 +181,7 @@ To https://github.com/Goydarik/lab06
   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
   to tell CMake that the project requires at least <min> but has been updated
   to work with policies introduced by <max> or earlier.
+```
 
 
 -- The C compiler identification is GNU 14.2.0
