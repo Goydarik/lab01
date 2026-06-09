@@ -24,8 +24,9 @@ $ cd projects/lab07
 $ git remote remove origin
 $ git remote add origin https://github.com/Goydarik/lab07
 $ nano CMakeLists.txt
-
+```
 Содержимое CMakeLists.txt:
+```
 cmake_minimum_required(VERSION 3.4)
 
 include(FetchContent)
@@ -113,8 +114,9 @@ TEST(PrintTest, OutputCheck) {
 ```
 
 $ nano CMakeLists.txt
-
+```
 Содержимое CMakeLists.txt:
+```
 add_executable(tests test_print.cpp)
 target_link_libraries(tests PRIVATE print gtest_main)
 add_test(NAME tests COMMAND tests)
@@ -187,8 +189,9 @@ Total Test time (real) =   0.01 sec
 ```
 $ mkdir demo
 $ nano demo/main.cpp
-
+```
 Содержимое main.cpp:
+```
 #include <print.hpp>
 #include <fstream>
 #include <iostream>
