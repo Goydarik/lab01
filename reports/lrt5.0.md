@@ -12,6 +12,8 @@
 -cd ${GITHUB_USERNAME}/workspace
 -pushd .
 --~/Goydarik/workspace ~/Goydarik/workspace
+```
+```
 -source scripts/activate
 -git clone https://github.com/${GITHUB_USERNAME}/lab04 projects/lab05
 --Клонирование в «projects/lab05»...
@@ -21,10 +23,14 @@ remote: Compressing objects: 100% (49/49), done.
 remote: Total 83 (delta 25), reused 79 (delta 21), pack-reused 0 (from 0)
 Получение объектов: 100% (83/83), 17.83 КиБ | 3.57 МиБ/с, готово.
 Определение изменений: 100% (25/25), готово.
+```
+```
 -cd projects/lab05
 -git remote remove origin
 -git remote add origin https://github.com/${GITHUB_USERNAME}/lab05
 -mkdir third-party
+```
+```
 -git submodule add https://github.com/google/googletest third-party/gtest
 --Клонирование в «/home/rasul/Goydarik/workspace/projects/lab05/third-party/gtest»...
 remote: Enumerating objects: 28627, done.
@@ -55,15 +61,21 @@ remote: Total 28627 (delta 32), reused 16 (delta 16), pack-reused 28563 (from 2)
 advice.detachedHead в значение false
 
 HEAD сейчас на 2fe3bd99 Merge pull request #1433 from dsacre/fix-clang-warnings
+```
+```
 -git add third-party/gtest
 -git commit -m"added gtest framework"
 --[main 3f307a1] added gtest framework
  2 files changed, 4 insertions(+)
  create mode 100644 .gitmodules
  create mode 160000 third-party/gtest
+```
+```
 -gsed -i '/option(BUILD_EXAMPLES "Build examples" OFF)/a\
 option(BUILD_TESTS "Build tests" OFF)
 ' CMakeLists.txt
+```
+```
 -cat >> CMakeLists.txt <<EOF
 > if(BUILD_TESTS)
 >   enable_testing()
@@ -74,7 +86,11 @@ option(BUILD_TESTS "Build tests" OFF)
 >   add_test(NAME check COMMAND check)
 > endif()
 > EOF
+```
+```
 -mkdir tests
+```
+```
 -cat > tests/test1.cpp <<EOF
 > #include <print.hpp>
 > #include <gtest/gtest.h>
@@ -91,6 +107,8 @@ option(BUILD_TESTS "Build tests" OFF)
 >   EXPECT_EQ(result, text);
 > }
 > EOF
+```
+```
 -nano .github/workflows/ci.yml
 -name: CI
 
@@ -120,6 +138,8 @@ jobs:
     
     - name: Install
       run: cmake --build build --target install
+```
+```
 -sed -i 's/lab04/lab05/g' README.md
 -git add .
 -git commit -m "added tests and GitHub Actions workflow"
