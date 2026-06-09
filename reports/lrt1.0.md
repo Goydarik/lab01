@@ -20,6 +20,9 @@
 -mkdir -p workspace/projects/
 -mkdir -p workspace/reports/
 -cd workspace
+```
+
+```
 -wget https://nodejs.org/dist/v6.11.5/node-v6.11.5-linux-x64.tar.xz
 ----2026-05-12 16:54:39--  https://nodejs.org/dist/v6.11.5/node-v6.11.5-linux-x64.tar.xz
 Распознаётся nodejs.org (nodejs.org)… 104.16.212.131, 104.16.213.131, 2606:4700::6810:d483, ...
@@ -30,7 +33,10 @@ HTTP-запрос отправлен. Ожидание ответа… 200 OK
 
 node-v6.11.5-linux- 100%[===================>]   8,92M  2,54MB/s    за 3,7s    
 
+
 2026-05-12 16:54:44 (2,44 MB/s) - «node-v6.11.5-linux-x64.tar.xz» сохранён [9356460/9356460]
+```
+```
 -tar -xf node-v6.11.5-linux-x64.tar.xz
 -rm -rf node-v6.11.5-linux-x64.tar.xz
 -mv node-v6.11.5-linux-x64 node
@@ -42,9 +48,12 @@ node-v6.11.5-linux- 100%[===================>]   8,92M  2,54MB/s    за 3,7s
 -echo ${PATH}
 --/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/rasul/Goydarik/workspace/node/bin
 -mkdir scripts
+```
+```
 -cat > scripts/activate<<EOF
 >export PATH=\${PATH}:`pwd`/node/bin
 >EOF
+
 -source scripts/activate
 -gem install gist
 --Fetching gist-6.0.0.gem

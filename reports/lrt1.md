@@ -9,16 +9,24 @@
 ```
 - find . -maxdepth 1 -type f | wc -l
 -- 12
+```
+```
 - find . -type f | wc -l
 -- 61191
-
+```
+```
 - find . -type f -name "*.h" -o -name "*.hpp" | wc -l
 -- 15208
+```
+```
 - find . -type f -name "*.cpp" | wc -l
 -- 13774
+```
+```
 - find . -type f ! -name "*.h" -a ! -name "*.hpp" -a ! -name "*.cpp" | wc -l
 -- 32209
-
+```
+```
 - find / -name "any.hpp" 2>/dev/null | xargs realpath
 -- /home/rasul/boost_1_69_0/boost/hana/any.hpp
 -- /home/rasul/boost_1_69_0/boost/hana/fwd/any.hpp
@@ -29,7 +37,8 @@
 -- /home/rasul/boost_1_69_0/boost/spirit/home/support/algorithm/any.hpp
 -- /home/rasul/boost_1_69_0/boost/proto/detail/any.hpp
 -- /home/rasul/boost_1_69_0/boost/type_erasure/any.hpp
-
+```
+```
 - grep -rl "boost::asio" .
 
 - ./bootstrap.sh --prefix=/usr/local --with-libraries=all
@@ -65,7 +74,8 @@
 -- for（；first！=last;++first）
 -- usr/include/c++/14/bits/stl vector.h:711:23:
 -- required from'std::vector<Tp,Alloc>::vector(InputIterator,InputIterator,const allocator_type&)[with InputIterator = boost::iterators::transform iterator<boost::algorithm::detail::copyiterator_rangeF<std::cxxll::basic_string<char>,gnucxx::normal_iterator<char*,std::cxxll::basic_string<char>>>,boost::algorithm::split_iterator<gnucxx::normal_iterator<char*>,std::cxxll::basic_string<char>>>,boost
-
+```
+```
 - nano test.cpp
 - g++ test.cpp -o test
 - cat test.cpp
@@ -77,10 +87,13 @@
 --     std::cout << "Boost lib version: " << BOOST_LIB_VERSION << std::endl;
 --     return 0;
 -- }
-
+```
+```
 - ./test
 -- Boost version: 106900
 -- Boost lib version: 1_69
+```
+```
 
 - mkdir -p ~/boost-libs
 - cd boost_1_69_0
@@ -104,7 +117,8 @@
 -- libboost_locate.a   libboost_wave.a
 -- libboost_prg_exec_monitor.a libboost_wserialization.a
 -- libboost_program_options.a
-
+```
+```
 - find ~/boost-libs -type f -exec ls -lh {} \; | awk
 '{print $5 "|" $9}'
 -- 319K    /home/rasul/boost-libs/libboost_contract.a
