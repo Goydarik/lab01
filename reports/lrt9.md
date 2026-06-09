@@ -340,7 +340,7 @@ https://github.com/Goydarik/lab09/releases/tag/v0.1.0.0
 ```
 $ gh release list
 TITLE     TYPE    TAG NAME  PUBLISHED          
-libprint  Latest  v0.1.0.0  about 8 minutes ago
+libprint  Latest  v0.1.0.0  less than a minute ago
 ```
 ```
 $ gh release view v0.1.0.0
