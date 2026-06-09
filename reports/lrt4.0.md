@@ -12,6 +12,8 @@
 -cd ${GITHUB_USERNAME}/workspace
 -pushd .
 --~/Goydarik/workspace ~/Goydarik/workspace
+```
+```
 -source scripts/activate
 -\curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
 --Turning on ignore dotfiles mode.
@@ -25,7 +27,8 @@ Thanks for installing RVM 🙏
 Please consider donating to our open collective to help us maintain RVM.
 
 👉  Donate: https://opencollective.com/rvm/donate
-
+```
+```
 -echo "source $HOME/.rvm/scripts/rvm" >> scripts/activate
 -. scripts/activate
 -rvm autolibs disable
@@ -53,7 +56,8 @@ ruby-3.3.8 - #generating default wrappers........
 ruby-3.3.8 - #adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
 Install of ruby-3.3.8 - #complete 
 Ruby was built without documentation, to build it run: rvm docs generate-ri
-
+```
+```
 -rvm use ruby-3.3.8 
 --Using /home/rasul/.rvm/gems/ruby-3.3.8
 -rvm use ruby-3.3.8 --default
@@ -169,7 +173,11 @@ Parsing documentation for travis-1.14.0
 Installing ri documentation for travis-1.14.0
 Done installing documentation for net-http-pipeline, connection_pool, net-http-persistent, multi_json, ffi, ethon, typhoeus, faraday-net_http, faraday, faraday-typhoeus, faraday-retry, public_suffix, addressable, concurrent-ruby, tzinfo, i18n, activesupport, travis-gh, rack, rack-test, websocket, pusher-client, launchy, json_pure, highline, faraday-rack, travis after 7 seconds
 27 gems installed
+```
+```
 -git clone https://github.com/${GITHUB_USERNAME}/lab03 projects/lab04
+```
+```
 -cat > .travis.yml <<EOF
 >language: cpp
 >EOF
@@ -188,6 +196,8 @@ Done installing documentation for net-http-pipeline, connection_pool, net-http-p
 >      - cmake
 >      - cmake-data
 >EOF
+```
+```
 -travis login --github-token ${GITHUB_TOKEN}
 --Shell completion not installed. Would you like to install it now? |y| 
 Successfully logged in as Goydarik!
@@ -198,6 +208,8 @@ Successfully logged in as Goydarik!
 -ex -sc '1i|bXIG3sP1doq1CNis8kfB6Q' -cx README.md
 -git add .travis.yml
 -git add README.md
+```
+```
 -git commit -m"added CI"
 --[main 15c90e3] added CI
  2 files changed, 13 insertions(+)
@@ -219,9 +231,12 @@ To set up a subscription, please visit app.travis-ci.com.
 -travis sync
 --synchronizing: . done
 -travis repos
-
+```
 (из-за невозможности продолжить работу в Travis CI переходим на Github Actions)
+```
 -mkdir -p .github/workflows
+```
+```
 -cat > .github/workflows/ci.yml << 'EOF'
 > name: CI
 > on:
@@ -244,12 +259,16 @@ To set up a subscription, please visit app.travis-ci.com.
 >     - name: Install
 >       run: cmake --build build --target install
 > EOF
+```
+```
 -cat > README.md << 'EOF'
 > # lab04
 > [![CI](https://github.com/Goydarik/lab04/actions/workflows/ci.yml/badge.svg)](https://github.com/Goydarik/lab04/actions/workflows/ci.yml)
 > ## О проекте
 > Проект для демонстрации непрерывной интеграции с Github Actions.
 > EOF
+```
+```
 -git add .github/workflows/ci.yml README.md
 -git commit -m "Add Github Actions CI workflow"
 --[main 2d87e6b] Add Github Actions CI workflow
@@ -264,6 +283,7 @@ Total 5 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
 To https://github.com/Goydarik/lab04
    db82a94..5233c95  main -> main
+
 ```
 (наблюдаем синхронизацию с Githab Actions)
 
