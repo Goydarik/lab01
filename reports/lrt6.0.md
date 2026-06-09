@@ -181,7 +181,7 @@ To https://github.com/Goydarik/lab06
   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
   to tell CMake that the project requires at least <min> but has been updated
   to work with policies introduced by <max> or earlier.
-```
+
 
 
 -- The C compiler identification is GNU 14.2.0
@@ -199,10 +199,14 @@ To https://github.com/Goydarik/lab06
 -- Configuring done (0.6s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/rasul/Goydarik/workspace/projects/lab06/_build
+```
+```
 -cmake --build _build
 --[ 50%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
 [100%] Linking CXX static library libprint.a
 [100%] Built target print
+```
+```
 -cd _build
 -cpack -G "TGZ"
 --CPack: Create package using TGZ
@@ -212,6 +216,8 @@ CPack: - Install project: print []
 CPack: Create package
 CPack: - package: /home/rasul/Goydarik/workspace/projects/lab06/_build/print--Linux.tar.gz generated.
 -cd ..
+```
+```
 -cmake -H. -B_build -DCPACK_GENERATOR="TGZ"
 --CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.10 will be removed from a future version of
@@ -234,6 +240,8 @@ CPack: - Run preinstall target for: print
 CPack: - Install project: print []
 CPack: Create package
 CPack: - package: /home/rasul/Goydarik/workspace/projects/lab06/_build/print--Linux.tar.gz generated.
+```
+```
 -mkdir artifacts
 -mv _build/*.tar.gz artifacts
 -tree artifacts
